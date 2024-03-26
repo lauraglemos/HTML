@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+
+
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <title>Formulario</title>
+
+        <link rel="stylesheet" href="p1.css">
+
+        <script src="p1.js"></script>
+
+
+    </head>
+
+    <body>
+
+        <h1>Formulario de Registro</h1>
+
+
+
+        <form name="formulario" action = "http://manolo.webs.uvigo.gal/SINT/P1.php" id="formulario" onsubmit="return otroEnviar()">
+       
+
+
+           <p class="datos"> Nombre y apellido: <input type="text" name="cname" id="cname" pattern="^[a-zA-ZÁÉÍÓÚáéíóúÑñ]{3,}[ ][a-zA-ZÁÉÍÓÚáéíóúÑñ]{3,}" title="El formato es incorrecto, debes introducir dos palabras de al menos tres letras, las cu&aacute;les pueden ser may&uacute;sculas, min&uacute;sculas y pueden contener acentos"></p> 
+          
+
+           <p class="datos"> Login: <input type="text" name="clogin" id="clogin"></p>
+
+           <div class= "mensajeerror" id="login_incorrecto"></div>
+
+           <p class="datos"> Contrase&ntilde;a: <input type="password" name="cpasswd" id="cpasswd"></p>
+           <p class= "mensajeerror" id="passwd_incorrecto"></p>
+
+           <p class="datos"> DNI: <input type="text" name="cdni" id="cdni"></p>
+           <p class= "mensajeerror" id="dni_incorrecto"></p>
+
+           <p class="datos"> Email: <input type="email" name="cemail" id="cemail"></p>
+           <p class="datos"> Fotograf&iacute;a: <input type="file" name="cfile" id="cfile"></p>
+
+           <p class="datos"> Selecciona un rango de edad:</p>
+           <label class="edad"> <input type="radio"  name="cage" value="menor25">Menor de 25
+           </label><br>
+            <label class="edad"><input type="radio"  name="cage" value="entre25y40">Entre 25 y 40
+            </label><br>
+            <label class="edad"><input type="radio"  name="cage" value="entre40y60">Entre 40 y 60
+            </label><br>
+            <label class="edad"><input type="radio"  name="cage" value="mayor60">Mayor de 60
+            </label>
+
+            <p class="datos">Indica los g&eacute;neros literarios que te gustan:</p>
+            <label class="genre"><input type="checkbox" name="cgenre[]" value="historia">Historia
+            </label><br>
+            <label class="genre"><input type="checkbox" name="cgenre[]" value="ensayo">Ensayo
+            </label><br>
+            <label class="genre"><input type="checkbox" name="cgenre[]" value="ciencia_ficcion">Ciencia Ficci&oacute;n
+            </label><br>
+            <label class="genre"><input type="checkbox" name="cgenre[]" value="poesia">Poesia
+            </label><br><br>
+            <label class="genre"><input type="checkbox" name="marcartodo" id='marcartodo' onclick="marcarTodosGeneros()"> Marcar todas las opciones 
+            </label><br>    
+            <label class="genre"><input type="checkbox" name="desmarcartodo" id='desmarcartodo' onclick="desmarcarTodosGeneros()"> Desmarcar todas las opciones
+            <br></label>
+
+
+            <p class="datos">Introduce un comentario:</p><textarea name="ccomment" rows="10" cols="60"></textarea>
+
+            <p class="datos">Selecciona el tipo de soporte:</p>
+            <select name="csoporte" class="soporte">
+                <option>Libro</option>
+                <option>CD</option>
+                <option>DVD</option>
+            </select>
+
+            <p class="datos">Selecciona el m&eacute;todo de env&iacute;o de datos</p>
+            <label class= "envio"><input type="radio" name="cmethod" id="GET" value="GET" onclick="funcionget()">GET
+            </label><br>
+            <label class= "envio"><input type="radio" name="cmethod" id="POST" value="POST" onclick="funcionpost()">POST
+            </label><br>
+
+            <p class="datos">Selecciona el tipo de codificaci&oacute;n de los datos enviados</p>
+            <label class= "envio"><input type="radio" name="cencoding" id= "url" value="url" onclick="funcionurl()">application/x-wwwform-urlencoded
+            </label><br>   
+            <label class= "envio"><input type="radio" name="cencoding" id= "multipart" value="multipart" onclick="funcionmultipart()">multipart/form-data
+            </label><br>
+            <input type="hidden" name="cbrowser" id="cbrowser" value="browser">
+
+
+            <br><br>
+            <button type="reset" id="reset" class="boton" value="RESTAURAR" onclick="restaurar()">RESTAURAR</button>
+            
+            <button type="submit" id="enviar" class="boton" value="ENVIAR"  onclick="verificarNombre(); verificarLogin(); verificarDNI(); verificarPassword();infoNavegador()">
+             ENVIAR</button>
+            
+            <br><br><br><br><br><br>
+            <p class="firma">Laura Gonz&aacute;lez Lemos</p>
+        </form>
+
+        
+    </body>
